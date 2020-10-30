@@ -1,0 +1,173 @@
+PRACTICAL TASK
+
+●	Initialize an empty Git repository on your local machine with the name
+
+“gitlocal” and make a README.md file in that directory which should contain
+
+your name as a heading and a hello message(https://www.makeareadme.com/) .
+Rohan@DESKTOP-3S5F23O MINGW64 ~/Documents/git
+$ ls -ltr
+total 8
+drwxr-xr-x 1 Rohan 197612 0 Oct 28 23:15 InnovationPython_rohan/
+drwxr-xr-x 1 Rohan 197612 0 Oct 28 23:44 gitlocal/
+
+Rohan@DESKTOP-3S5F23O MINGW64 ~/Documents/git
+$ rm -rf gitlocal/
+
+Rohan@DESKTOP-3S5F23O MINGW64 ~/Documents/git
+$ mkdir gitlocal;cd gitlocal
+
+Rohan@DESKTOP-3S5F23O MINGW64 ~/Documents/git/gitlocal
+$ git init
+Initialized empty Git repository in C:/Users/Rohan/Documents/git/gitlocal/.git/
+
+Rohan@DESKTOP-3S5F23O MINGW64 ~/Documents/git/gitlocal (master)
+$ vi README.md
+
+Rohan@DESKTOP-3S5F23O MINGW64 ~/Documents/git/gitlocal (master)
+$ ls -ltr
+total 1
+-rw-r--r-- 1 Rohan 197612 13 Oct 29 00:04 README.md
+
+•	Now check the status of your git directory and push all the files in that directory to your GitHub repo which you have made in the first step. With a massage “First Commit to Git Repo”.
+Rohan@DESKTOP-3S5F23O MINGW64 ~/Documents/git/gitlocal (master)
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        README.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Rohan@DESKTOP-3S5F23O MINGW64 ~/Documents/git/gitlocal (master)
+$ git add .
+warning: LF will be replaced by CRLF in README.md.
+The file will have its original line endings in your working directory
+
+Rohan@DESKTOP-3S5F23O MINGW64 ~/Documents/git/gitlocal (master)
+$ git commit -m "First Commit to Git Repo" .
+warning: LF will be replaced by CRLF in README.md.
+The file will have its original line endings in your working directory
+[master (root-commit) c394947] First Commit to Git Repo
+ 1 file changed, 2 insertions(+)
+ create mode 100644 README.md
+
+Rohan@DESKTOP-3S5F23O MINGW64 ~/Documents/git/gitlocal (master)
+$ git remote add origin https://github.com/rohan9388/gitlocal.git
+
+Rohan@DESKTOP-3S5F23O MINGW64 ~/Documents/git/gitlocal (master)
+$ git push
+fatal: The current branch master has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin master
+
+
+Rohan@DESKTOP-3S5F23O MINGW64 ~/Documents/git/gitlocal (master)
+$ git push origin master
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 236 bytes | 236.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/rohan9388/gitlocal.git
+ * [new branch]      master -> master
+
+•	Now add a file to your Github repo named “demo.txt” from the github console with content : “This is the demo file before modifications”.
+Rohan@DESKTOP-3S5F23O MINGW64 ~/Documents/git/gitlocal (master)
+$ git pull origin master
+From https://github.com/rohan9388/gitlocal
+ * branch            master     -> FETCH_HEAD
+Updating c394947..8204dd9
+Fast-forward
+ demo.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 demo.txt
+
+Rohan@DESKTOP-3S5F23O MINGW64 ~/Documents/git/gitlocal (master)
+$ ls -ltr
+total 2
+-rw-r--r-- 1 Rohan 197612 13 Oct 29 00:04 README.md
+-rw-r--r-- 1 Rohan 197612 51 Oct 29 00:08 demo.txt
+
+Rohan@DESKTOP-3S5F23O MINGW64 ~/Documents/git/gitlocal (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+●	Pull the changes in your git repo to your local machine git directory named “gitlocal” and check the status for the modifications done in that repo. This time demo should be visible in your local machine.
+https://github.com/rohan9388/gitlocal
+
+
+•	Now make a new branch in your local machine with the name “developer”.
+
+Rohan@DESKTOP-3S5F23O MINGW64 ~/Documents/git/gitlocal (master)
+$ git checkout -b developer
+Switched to a new branch 'developer'
+
+
+
+
+
+•	Edit that demo file and write some content in that eg: “This is a demo file after modification” and push the modifications to your GitHub repo from the developer branch with a commit message “Commit from developer branch”.
+Rohan@DESKTOP-3S5F23O MINGW64 ~/Documents/git/gitlocal (developer)
+$ vi demo.txt
+
+Rohan@DESKTOP-3S5F23O MINGW64 ~/Documents/git/gitlocal (developer)
+$ git commit -m "Commit from developer branch" .
+[developer d67a23a] Commit from developer branch
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Rohan@DESKTOP-3S5F23O MINGW64 ~/Documents/git/gitlocal (developer)
+$ git push origin developer
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 335 bytes | 335.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+remote:
+remote: Create a pull request for 'developer' on GitHub by visiting:
+remote:      https://github.com/rohan9388/gitlocal/pull/new/developer
+remote:
+To https://github.com/rohan9388/gitlocal.git
+ * [new branch]      developer -> developer
+
+
+●	Go to the GitHub console and generate a merge request to master branch after checking the modifications.
+
+•	After merging you could see the modified content in the demo file. Now revert back to the previous version from terminal.
+After switching back to the previous version your demo file should have the content: This is a demo file before modification.
+Rohan@DESKTOP-3S5F23O MINGW64 ~/Documents/git/gitlocal (master)
+$ vi demo.txt
+
+Rohan@DESKTOP-3S5F23O MINGW64 ~/Documents/git/gitlocal (master)
+$ git commit -m "Revert to previous commit" .
+[master a589aa6] Revert to previous commit
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Rohan@DESKTOP-3S5F23O MINGW64 ~/Documents/git/gitlocal (master)
+$ git push origin master
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 334 bytes | 334.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/rohan9388/gitlocal.git
+   3e7c923..a589aa6  master -> master
+
+
+
+•	At the end delete the developer branch.
+
+Rohan@DESKTOP-3S5F23O MINGW64 ~/Documents/git/gitlocal (master)
+$ git push origin --delete developer
+To https://github.com/rohan9388/gitlocal.git
+ - [deleted]         developer
+
+
+[Paste snips after each question]
+
